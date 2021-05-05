@@ -1,0 +1,48 @@
+How to develop a new theme
+Prerequisites
+
+DISABLE Ossn cache
+setting up a 2nd OSSN site for development only
+Before talking about the real deal, some basic thoughts in advance. Always have in mind that whatever theme will be your active theme: it's a fundamental part of your site. That said, twisting the look and feel of a live site can't be a good idea, right? Your users will gain a bad experience if menus are subject to change every 5 minutes or when they can't login any more because you chose a black font on a black background by mistake. Wrong coding may even lead to a 'white page' and your site will be offline completely. So, don't stress yourself and your community - always keep development aside from a running forum.
+
+setting up a reliable versioning and backup system
+Making backups before applying any changes is another important section. Nobody is that tough to create a perfectly looking theme from scratch in just one step. At that means: It will take a lot of time and changes before you're done. Some changes may work as expected instantly, others don't. The real nasty ones use to appear to be wrong days or even weeks later. And it's sooo good to know that simply reverting back to a former backup will bring you to a still working stage. It needs discipline, yes, but the more backups you have the better the chance to localize where and when a bug became part of your code. All you need is a meaningful and consistant versioning system. You may either make it part of your file names like file-000.php to file-999.php, add a timestamp like file-20151004-2031.php - or even more professional: Move your stuff to *https://github.com/*.
+
+making use of your brower's debugging capabilities
+All modern browsers already include some tools to inspect the structure and style of the site your looking at. Just do a right-click, and choose 'inspect element'. Even more: you can see the involved lines of your template files, and you can apply small changes like different colors, bigger fonts, what you want ... on the fly. Of course, all this implies that you have a basic knowledge of CSS. More sophisticated handling needs Javascript, and if you want to access OSSN core elements finally you have to understand PHP. Thus, the next steps will be:
+
+making friends with CSS, Javascript and PHP
+The last prerequisite is
+
+choosing a programming editor, capable of UTF-8 encoding and directory searches
+Never touch your files with document processing tools like MS-Word or OpenOfficeWriter. They add a lot of extra formatting tags and your code will become unusable. Use Notepad++, SublimeText or something similar instead. The capability of searching for a string in a bunch of files will become extremely helpful, since (at least in the beginning) your every day's development cycle will be:
+
+right-clicking the element of interest in your browser
+exploring/changing the style from within your broswer's development panel
+finding the corresponding element in the file tree of your theme
+applying the already previewed changes to your source file(s)
+Deriving a new theme from the OSSN default theme
+
+As already said, it makes much more sense to apply your changes step by step to a known working template instead of starting completely from scratch. All you have to do is:
+
+download the same OSSN installer package you are currently running on the web
+unzip this package to your local harddrive
+enter the directory named themes of your unpacked archive
+you should see one subdirectory: goblue
+make a copy of the goblue folder and rename it as you like (e.g. winterland)
+for allowed names refer to https://www.opensource-socialnetwork.org/wiki/view/909/naming-convention-for-creating-themes
+enter your theme directory (winterland)
+open ossn_theme.xml with your programming text editor
+change what has to be changed (theme name, author, etc)
+the first version is your theme's version (e.g. 1.0), the latter one is the required OSSN core system it needs to run on
+save your changes, then open ossn_theme.php
+on line 11, the path to your theme's folder is being defined
+and since this is no longer goblue, but winterland: change goblue to winterland
+save your change, leave the editor and go back to the themes directory
+with 7-zip or any other zip archviver create a zip archive of winterland
+you have a valid OSSN theme package named winterland.zip now
+log in to your developer site's OSSN administrator panel now
+disable caching via Site Settings->Cache
+upload winterland.zip via Themes->Installer
+enable winterland via Themes->Themes
+And have fun developing. :)
